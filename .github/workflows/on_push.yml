@@ -35,10 +35,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses:  actions/checkout@v2
-      - id: repository
-        uses: ASzc/change-string-case-action@v6
-        with:
-          string: ${{ github.repository }}
       - name: Log in to the Container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
@@ -50,4 +46,4 @@ jobs:
           context: .
           push: true
           tags: 
-            ghcr.io/${{ steps.repository.outputs.lowercase  }}:latest, ghcr.io/{{ steps.repository.outputs.lowercase  }}:${{ github.ref_name }}
+            ghcr.io/lyliaz/tuto_test:latest, ghcr.io/lyliaz/tuto_test:${{ github.ref_name }}
