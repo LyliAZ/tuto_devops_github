@@ -16,7 +16,7 @@ jobs:
       - name : run shellcheck
         uses: ludeeus/action-shellcheck@master
   tests:
-    if: github.ref_name == '!main'
+    if: github.ref_name != 'main'
     needs: shellcheck
     runs-on: ubuntu-latest
     steps:
