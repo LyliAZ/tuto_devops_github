@@ -45,4 +45,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/lyliaz/tuto_test_1:latest
+          tags: 
+            ghcr.io/${{ github.repository }}:latest, ghcr.io/${{ github.repository }}:${{ github.ref_name }}
