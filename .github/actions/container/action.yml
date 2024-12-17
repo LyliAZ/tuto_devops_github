@@ -1,0 +1,19 @@
+name: 'container'
+description: 'An action to create a container and push it to git'
+
+outputs:
+  output-msg:
+    description: 'Output message'
+steps:
+  - name: Log in to the Container registry
+    uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+    with:
+      registry: https://ghcr.io
+      username: ${{ github.actor }}
+      password: ${{ secrets.GITHUB_TOKEN }}
+  - uses: docker/build-push-action@v2
+    with:
+      context: .
+      push: true
+      tags: 
+        ghcr.io/lyliaz/tuto_test:latest, ghcr.io/lyliaz/tuto_test:${{ github.ref_name }}
