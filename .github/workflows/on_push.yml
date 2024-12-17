@@ -45,4 +45,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/lilyaz/tuto_test_1:latest
+          tags: ghcr.io/lyliaz/tuto_test_1:latest
