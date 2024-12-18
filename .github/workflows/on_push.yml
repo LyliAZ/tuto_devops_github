@@ -41,9 +41,11 @@ jobs:
       - uses:  actions/checkout@v2
       - uses: ./.github/actions/container
         with:
+          # secret : ${{ secrets.GITHUB_TOKEN }}
+          # actor : ${{ github.actor }}
           docker_repo: trialk033s3.jfrog.io/docker-trial
-          secret : ${{ secrets.GITHUB_TOKEN }}
-          actor : ${{ github.actor }}
+          actor: lylia
+          secret: ${{ secrets.JFROG_DOCKER_TOKEN }}
       
     #   - uses:  actions/checkout@v2
     #   - name: Log in to the Container registry
