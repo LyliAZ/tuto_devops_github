@@ -2,6 +2,8 @@ name: 'container'
 description: 'An action to create a container and push it to git'
 
 inputs:
+  docker_repo:
+    required: true
   secret:
     description: 'git secret'
     required: true
@@ -14,7 +16,7 @@ runs:
     - name: Log in to the Container registry
       uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
       with:
-        registry: https://ghcr.io
+        registry: https://${{ inputs.docker_repo }}
         username: ${{ inputs.actor }}
         password: ${{ inputs.secret }}
     - uses: docker/build-push-action@v2
@@ -22,5 +24,5 @@ runs:
         context: .
         push: true
         tags: 
-          ghcr.io/lyliaz/tuto_test:latest, 
-          ghcr.io/lyliaz/tuto_test:${{ github.ref_name }}
+          ${{ inputs.docker_repo }}/tuto_dev:latest, 
+          ${{ inputs.docker_repo }}/tuto_dev:${{ github.ref_name }}
