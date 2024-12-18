@@ -24,5 +24,5 @@ runs:
         context: .
         push: true
         tags: 
-          ${{ inputs.docker_repo }}/tuto_dev:latest, 
-          ${{ inputs.docker_repo }}/tuto_dev:${{ github.ref_name }}
+          ${{ inputs.docker_repo }}/tuto_dev_lylia:latest, 
+          ${{ inputs.docker_repo }}/tuto_dev_lylia:${{ github.ref_name }}
