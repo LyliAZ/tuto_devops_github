@@ -46,6 +46,19 @@ jobs:
           docker_repo: trialk033s3.jfrog.io/docker-trial
           actor: lylia
           secret: ${{ secrets.JFROG_DOCKER_TOKEN }}
+  sonarqube:
+    name: SonarQube
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      
       
     #   - uses:  actions/checkout@v2
     #   - name: Log in to the Container registry
